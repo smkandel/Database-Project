@@ -1,0 +1,34 @@
+SQL> DELETE FROM LEAGUE WHERE ID=1;
+DELETE FROM LEAGUE WHERE ID=1
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (SXP7656.SYS_C00857983) violated - child record 
+found 
+
+Explanation:
+There is a foreign key constraint between the MATCH table and the LEAGUE table. This indicates that records referencing LEAGUE can be found in the MATCH table.ID is 1. Because dependant records are still present in the MATCH table, deleting the entry from LEAGUE would be against the foreign key restriction.
+
+
+SQL> DELETE FROM COUNTRY WHERE ID=1;
+DELETE FROM COUNTRY WHERE ID=1
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (SXP7656.SYS_C00857982) violated - child record 
+found 
+
+Explanation:
+A foreign key constraint exists between the COUNTRY table and the LEAGUE table. This indicates that the LEAGUE table has records referencing COUNTRY.ID is 1. Since leagues are still referencing COUNTRY, deleting the record from COUNTRY would be against the foreign key limitation.
+
+
+SQL> DELETE FROM TEAM WHERE TEAM_FIFA_API_ID =673;
+DELETE FROM TEAM WHERE TEAM_FIFA_API_ID =673
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (SXP7656.SYS_C00858011) violated - child record 
+found 
+
+Explanation:
+Due to a foreign key constraint between the TEAM table and the MATCH table, records referencing TEAM_FIFA_API_ID = 673 can be found in the MATCH table. As long as dependant records in the MATCH table continue to reference this team, deleting it would violate the foreign key restriction.
+
+
+SQL> SPOOL OFF;
