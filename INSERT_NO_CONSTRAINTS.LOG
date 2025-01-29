@@ -1,0 +1,24 @@
+SQL> INSERT INTO COUNTRY (ID,NAME) VALUES (2,'VALIDCOUNTRY');
+
+1 row created.
+
+Explanation:
+
+A new record with ID = 2 and NAME = 'VALIDCOUNTRY' was created into the COUNTRY table. Due to the ID's uniqueness and the lack of foreign key violations, this record was successfully added.
+
+SQL> INSERT INTO LEAGUE(ID,COUNTRY_ID,NAME) VALUES (2,2,'VALIDLEAGUE');
+
+1 row created.
+
+Explanation:
+
+inserted a new record into the LEAGUE table with ID = 2, COUNTRY_ID = 2, and NAME = 'VALIDLEAGUE'. The COUNTRY_ID = 2 refers to the valid country just inserted, so this insertion respected the foreign key constraint
+
+SQL> INSERT INTO TEAM(ID,TEAM_API_ID,TEAM_FIFA_API_ID,TEAM_LONG_NAME,TEAM_SHORT_NAME)VALUES (2,1006,676,'VALID TEAM','VT');
+
+1 row created.
+
+Explanation:
+inserted a new record into the TEAM table with ID = 2, TEAM_API_ID = 1006, TEAM_FIFA_API_ID = 676, TEAM_LONG_NAME = 'VALID TEAM', and TEAM_SHORT_NAME = 'VT'. These values were unique, and no integrity constraints were violated.
+
+SQL> SPOOL OFF;
